@@ -142,7 +142,7 @@ function OverflowSlider($id, count, drag, disableClick){
 const wmVersion = Static.SQUARESPACE_CONTEXT.templateVersion;
 if (wmVersion === "7"){
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1.001/overflowSlider.min.css">');
+    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1.003/overflowSlider.min.css">');
     window.Squarespace.onInitialize(Y, function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
@@ -156,7 +156,7 @@ if (wmVersion === "7"){
   }  
 } else if (wmVersion === "7.1") {
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1.001/overflowSlider.min.css">');
+    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1.003/overflowSlider.min.css">');
     $(function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
