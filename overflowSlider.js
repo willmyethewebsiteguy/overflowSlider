@@ -21,6 +21,36 @@ function OverflowSlider($id, count, drag, disableClick){
   }    
   
   getSizing();
+  
+   
+  let fluidBlock = document.querySelector($id).closest('.fe-block');
+  if (fluidBlock && (window.top !== window.self)) {
+    
+    function watchForEditMode(instance) {
+      let elemToObserve = document.querySelector("body");
+      let prevClassState = elemToObserve.classList.contains("sqs-edit-mode-active");
+      let observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.attributeName == "class") {
+            let currentClassState = mutation.target.classList.contains("sqs-edit-mode-active");
+            if (prevClassState !== currentClassState) {
+              prevClassState = currentClassState;
+              if (currentClassState) {
+                let styles = `<style>
+                body.sqs-edit-mode-active ${$id} .summary-item:not(:first-of-type){
+                    display:none !important;
+                  }
+                </style>`;
+                document.head.insertAdjacentHTML('afterbegin', styles);
+              }
+            }
+          }
+        });
+      });
+      observer.observe(elemToObserve, { attributes: true });
+    }
+    watchForEditMode();
+  }
 
   /*Setup CSS*/
   $(thisObj.id).addClass('wm-overflow-slider');
