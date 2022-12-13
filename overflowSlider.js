@@ -11,7 +11,7 @@ function OverflowSlider($id, count, drag, disableClick){
   thisObj.count = count;
   thisObj.drag = drag;
   thisObj.disableClick = disableClick == "true" ? true : false;
-  thisObj.data = JSON.parse($(thisObj.id).attr('data-block-json'));
+  thisObj.data = JSON.parse($($id).attr('data-block-json'));
   
   function getSizing(){
     thisObj.margin = (thisObj.data.gutter) + 'px';
@@ -21,9 +21,8 @@ function OverflowSlider($id, count, drag, disableClick){
   }    
   
   getSizing();
-  
-   
-  let fluidBlock = document.querySelector($id).closest('.fe-block');
+
+  let fluidBlock = document.querySelector(thisObj.idSelector).closest('.fe-block');
   if (fluidBlock && (window.top !== window.self)) {
     
     function watchForEditMode(instance) {
@@ -171,7 +170,7 @@ function OverflowSlider($id, count, drag, disableClick){
 const wmVersion = Static.SQUARESPACE_CONTEXT.templateVersion;
 if (wmVersion === "7"){
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css">');
+    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css" rel="stylesheet">');
     window.Squarespace.onInitialize(Y, function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
@@ -185,7 +184,7 @@ if (wmVersion === "7"){
   }  
 } else if (wmVersion === "7.1") {
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css">');
+    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css" rel="stylesheet">');
     $(function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
