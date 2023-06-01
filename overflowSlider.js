@@ -15,9 +15,9 @@ function OverflowSlider($id, count, drag, disableClick){
   
   function getSizing(){
     thisObj.margin = (thisObj.data.gutter) + 'px';
-    thisObj.width = $(thisObj.id).find('.summary-item:nth-of-type(2)').css('width');
-    thisObj.widthVal = $(thisObj.id).find('.summary-item:nth-of-type(2)').css('width').replace("px", "");
-    thisObj.marginVal = parseInt($(thisObj.id).find('.summary-item:first-of-type').css('margin-right')) / 2;
+    thisObj.width = $(thisObj.id).find('.summary-item:nth-of-type(2)').css('width') || '34px';
+    thisObj.widthVal = $(thisObj.id).find('.summary-item:nth-of-type(2)').css('width')?.replace("px", "")  ||  '34';
+    thisObj.marginVal = parseInt($(thisObj.id).find('.summary-item:first-of-type').css('margin-right')) / 2  || '34px' ;
   }    
   
   getSizing();
@@ -57,7 +57,11 @@ function OverflowSlider($id, count, drag, disableClick){
 
   /*Adjust Left Side*/
   function checkLeft(){
-    let leftOffSet = $($id).offset().left + 17 + 'px';
+    let offset = 17;
+    if (fluidBlock) {
+      offset = 0;
+    }
+    let leftOffSet = $($id).offset().left + offset + 'px';
     $($id)[0].style.setProperty('--leftOffSet', leftOffSet);
   } 
   
@@ -165,6 +169,9 @@ function OverflowSlider($id, count, drag, disableClick){
     }
   }
   loadPluginImages();
+  window.setTimeout(function(){
+    $($id).find('.summary-item-list')[0].scrollLeft = 0;
+  }, 200)
 }
 
 const wmVersion = Static.SQUARESPACE_CONTEXT.templateVersion;
