@@ -139,13 +139,14 @@ function OverflowSlider($id, count, drag, disableClick){
   /*Move Right*/
   rightBtn.addEventListener('click', (e) => {
     scrollLeft = slider.scrollLeft;
-    slider.scrollLeft = scrollLeft + ((parseInt(thisObj.widthVal) + parseInt(thisObj.marginVal * 2)));
+    
+    slider.scrollLeft = scrollLeft + (parseInt(thisObj.widthVal) + (parseInt(thisObj.marginVal) * 2));
   })
   /*Move Left*/
   leftBtn.addEventListener('click', (e) => {
     getSizing();
     scrollLeft = slider.scrollLeft;
-    slider.scrollLeft = scrollLeft - ((parseInt(thisObj.widthVal) - parseInt(thisObj.marginVal * 2)));
+    slider.scrollLeft = scrollLeft - (parseInt(thisObj.widthVal) - (parseInt(thisObj.marginVal) * 2));
   })
 
   $(window).on('resize', function(){
