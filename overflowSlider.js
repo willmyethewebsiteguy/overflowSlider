@@ -178,7 +178,7 @@ function OverflowSlider($id, count, drag, disableClick){
 const wmVersion = Static.SQUARESPACE_CONTEXT.templateVersion;
 if (wmVersion === "7"){
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css" rel="stylesheet">');
+    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1/overflowSlider.min.css" rel="stylesheet">');
     window.Squarespace.onInitialize(Y, function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
@@ -192,7 +192,7 @@ if (wmVersion === "7"){
   }  
 } else if (wmVersion === "7.1") {
   if ($('[wm-plugin="overflow-slider"]').length){
-    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1.1/overflowSlider.min.css" rel="stylesheet">');
+    $('head').prepend('<link href="https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/overflowSlider@1/overflowSlider.min.css" rel="stylesheet">');
     $(function(){
       /*Constructor*/
       $('[wm-plugin="overflow-slider"]').each(function(i){
@@ -205,7 +205,11 @@ if (wmVersion === "7"){
         } else {
           $id = $(this).closest('.sqs-block').prev();
         }
-        new OverflowSlider($id, count, drag, clickable);
+        try {
+          new OverflowSlider($id, count, drag, clickable);
+        } catch (err) {
+          console.log('Error with loading the Overflow Plugin: ', err)
+        }
       });
     });
   }  
