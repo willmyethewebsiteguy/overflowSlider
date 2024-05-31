@@ -24,7 +24,7 @@
 }
 .wm-overflow-slider  .summary-item-list::after{
   content:"";
-  padding:calc(var(--leftOffSet) / 2);
+  padding:0 calc(var(--leftOffSet) / 2);
 }
 .wm-overflow-slider .summary-item-list.active{
   scroll-behavior: auto;
